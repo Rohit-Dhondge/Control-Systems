@@ -1,0 +1,132 @@
+\documentclass{article}
+\begin{document}
+\noindent \textbf{Name: Rohit Dhondge\\Roll Number : CE18btech11026 \\ Assignment 1 ( Q1 chapter 2)}\\
+\noindent \textbf{1.} Derive the laplace transform of  the following time functions: [section2.2]\\
+\textbf{a.} $u(t)$\\
+so here $f(t) = u(t)$
+where
+\begin{eqnarray}
+u(t) & = & 1 \ \ \  t>0\\
+& = & 0 \ \ \  t=0
+\end{eqnarray}
+since the time function doesn't contain impulse function,we can replace the lower limit of laplace transform with 0
+\begin{eqnarray*}
+F(s) & = & \int_0^{\infty} f(t)e^{-st}dt\\
+& = & \int_0^{\infty} u(t)e^{-st}dt\\
+\mbox{using equation (1)}\\
+& = & \int_0^{\infty} e^{-st}dt\\
+& = & -1/s \times [e^{-st}]_0^{\infty}\\
+& = & -1/s \times [e^{-s\times \infty} - e^{-s \times 0}]\\
+& = & -1/s \times [0-1]\\
+& = & -1/s \times -1\\
+& = & 1/s
+\end{eqnarray*}
+
+\noindent \textbf{b.} $tu(t)$\\
+so here $f(t) = tu(t)$
+where
+\begin{eqnarray}
+u(t) & = & 1 \ \ \  t>0\\
+& = & 0 \ \ \  t=0
+\end{eqnarray}
+since the time function doesn't contain impulse function,we can replace the lower limit of laplace transform with 0
+\begin{eqnarray*}
+F(s) & = & \int_0^\infty f(t)e^{-st}dt\\
+& = & \int_0^\infty tu(t)e^{-st}dt\\
+\mbox{using equation (3)}\\
+& = & \int_0^\infty t\cdot e^{-st}dt\\
+& = & [(t\int e^{-st}dt) - (\int (\int e^{-st}dt)dt)]_0^\infty \\
+& = & 1/s[ -t\cdot e^{-st} + \int e^{-st}dt]_0^\infty \\
+& = & 1/s[ -t\cdot e^{-st} - 1/s\cdot e^{-st}]_0^\infty \\
+& = & 1/s[ 0 - 0 + 0 + (1/s)] \\
+& = & 1/s^2 \\
+\end{eqnarray*}
+
+\noindent \textbf{c.} $sin(\omega t)u(t)$\\
+so here $f(t) = sin(\omega t)u(t)$
+where
+\begin{eqnarray}
+u(t) & = & 1 \ \ \  t>0\\
+& = & 0 \ \ \  t=0
+\end{eqnarray}
+$sin(\omega t)$ can be written as following\\
+$$sin(\omega t) = \frac{e^{i\omega t} - e^{-i\omega t}}{2i} $$
+using following properties
+$$ L[f(t_1) + f(t_2)] = L[f(t_1)] + L[f(t_2)] $$ \\
+$$ L[af(t)] = aL[f(t)] $$ \ \ \ \ \ where a = constant \\
+\begin{eqnarray}
+L[sin(\omega t) u(t)] & = & L[\frac{e^{i\omega t} u(t) - e^{-i\omega t} u(t)}{2i}] \\
+& = & \frac{1}{2i}\times(L[e^{i\omega t} u(t)] - L[e^{-i\omega t} u(t)]) \\
+\end{eqnarray}
+so, first  we will find the $L[e^{i\cdot \omega t}  u(t)]$ \\
+\begin{eqnarray*}
+L[e^{i\omega t} u(t)]  & = &  \int_0^\infty e^{i\omega t}u(t)e^{-st} dt \\
+\mbox{using equation} (5) \\
+ &=&  \int_0^\infty e^{i\omega t}(1)e^{-st} dt \\
+ &=&  \int_0^\infty e^{(i\omega -s)t}dt \\
+ &=&  \frac{1}{i\omega-s}\times [e^{(i\omega -s)t}]_0^\infty \\
+ &=&  \frac{1}{i\omega-s}\times(e^{(i \omega -s)\infty} -e^{(i\omega -s)0}) \\
+ &=&  \frac{1}{i\omega-s}\times( 0 - 1 ) \\
+ &=& \frac{-1}{i\omega-s} \\
+\end{eqnarray*}
+so, using $L[e^{i\cdot \omega t} u(t)]$  we can find the $L[e^{-i\cdot \omega t} u(t)]$ \\
+\begin{eqnarray*}
+L[e^{-i\omega t} u(t)]  & = &  \frac{-1}{i(-1)\omega-s} \\
+&=&  \frac{1}{i\omega+s} \\
+\end{eqnarray*}
+As we know
+\begin{eqnarray}
+L[sin(\omega t) u(t)] & = &\frac{1}{2i}\times(L[e^{i\omega t} u(t)] - L[e^{-i\omega t} u(t)]) \\
+&=& \frac{1}{2i}\times \left[\left(\frac{-1}{i\omega-s}\right) - \left(\frac{1}{i\omega+s}\right)\right]\\
+&=& \frac{-1}{2i}\times \left[\left(\frac{1}{i\omega-s}\right) + \left(\frac{1}{i\omega+s}\right)\right] \\
+&=& \frac{-1}{2i}\times \left(\frac{i\omega+s + i\omega-s}{(i\omega-s)(i\omega+s)}\right) \\
+&=& \frac{-1}{2i}\times \left(\frac{2i\omega}{(i^2\omega ^2 -s^2)}\right) \\
+&=& \frac{-1}{2i}\times \left(\frac{2i\omega}{((-1)\omega ^2 -s^2)}\right) \\
+&=& \frac{-1}{2i}\times \left(\frac{-2i\omega}{(\omega ^2 + s^2)})\right) \\
+&=& \frac{\omega}{(\omega ^2 + s^2)}
+\end{eqnarray}
+
+\noindent \textbf{d.} $cos(\omega t)u(t)$\\
+so here $f(t) = cos(\omega t)u(t)$
+where
+\begin{eqnarray}
+u(t) & = & 1 \ \ \  t>0\\
+& = & 0 \ \ \  t=0
+\end{eqnarray}
+$cos(\omega t)$ can be written as following\\
+$$cos(\omega t) = \frac{e^{i\omega t} + e^{-i\omega t}}{2} $$
+using following properties
+$$ L[f(t_1) + f(t_2)] = L[f(t_1)] + L[f(t_2)] $$ \\
+$$ L[af(t)] = aL[f(t)] $$ \ \ \ \ \ where a = constant \\
+\begin{eqnarray}
+L[cos(\omega t) u(t)] & = & L[\frac{e^{i\omega t} u(t) +  e^{-i\omega t} u(t)}{2}] \\
+& = & \frac{1}{2}\times(L[e^{i\omega t} u(t)] + L[e^{-i\omega t} u(t)]) \\
+\end{eqnarray}
+so, first  we will find the $L[e^{i\cdot \omega t} u(t)]$ \\
+\begin{eqnarray*}
+L[e^{i\omega t} u(t)]  & = &  \int_0^\infty e^{i\omega t}u(t)e^{-st} dt \\
+\mbox{using equation} (5)
+ &=&  \int_0^\infty e^{i\omega t}(1)e^{-st} dt \\
+ &=&  \int_0^\infty e^{(i\omega -s)t}dt \\
+ &=&  \frac{1}{i\omega-s}\times [e^{(i\omega -s)t}]_0^\infty \\
+ &=&  \frac{1}{i\omega-s}\times(e^{(i \omega -s)\infty} -e^{(i\omega -s)0}) \\
+ &=&  \frac{1}{i\omega-s}\times( 0 - 1 ) \\
+ &=& \frac{-1}{i\omega-s} \\
+\end{eqnarray*}
+so, using $L[e^{i\cdot \omega t} u(t)]$  we can find the $L[e^{(-i\cdot \omega t} u(t)]$ \\
+\begin{eqnarray*}
+L[e^{-i\omega t} u(t)]  & = &  \frac{-1}{i(-1)\omega-s} \\
+&=&  \frac{1}{i\omega+s} \\
+\end{eqnarray*}
+As we know
+\begin{eqnarray}
+L[sin(\omega t) u(t)] & = &\frac{1}{2}\times(L[e^{i\omega t} u(t)] + L[e^{-i\omega t} u(t)]) \\
+&=& \frac{1}{2}\times \left[\left(\frac{-1}{i\omega-s}\right) + \left(\frac{1}{i\omega+s}\right)\right]\\
+&=& \frac{1}{2}\times \left[\left(\frac{-1}{i\omega-s}\right) + \left(\frac{1}{i\omega+s}\right)\right] \\
+&=& \frac{1}{2}\times \left(\frac{-i\omega-s + i\omega-s}{(i\omega-s)(i\omega+s)}\right) \\
+&=& \frac{1}{2}\times \left(\frac{-2s}{(i^2\omega ^2 -s^2)}\right) \\
+&=& \frac{1}{2}\times \left(\frac{-2s}{((-1)\omega ^2 -s^2)}\right) \\
+&=& \frac{1}{2}\times \left(\frac{2s}{(\omega ^2 + s^2)})\right) \\
+&=& \frac{s}{(\omega ^2 + s^2)}
+\end{eqnarray}
+\end{document}
